@@ -79,6 +79,7 @@ Page for displaying case steps and managing case step information
       <option value="accountUpdate">Account Info Update</option>
       <option value="containerDel">Container Delivery</option>
       <option value="containerRem">Container Removal</option>
+      <option value="billEscal">Billing Escalation</option>
     </select></strong>
   </div>
   <div id="picDiv" >
@@ -87,6 +88,7 @@ Page for displaying case steps and managing case step information
   </div>
   <div id="soldResi" style="display:none">
   <br>
+    <strong class="a">Sold new Residential</strong>
     <ol>
         <li>From <strong>AMR Queue</strong> in cases select an open Case.</li>
         <li>Determine whether the case is Residential or Commercial.</li>
@@ -297,6 +299,7 @@ Page for displaying case steps and managing case step information
   </div>
   <div id="refundDiv" style="display:none">
     <br>
+    <strong class="a">Request a Refund</strong>
     <ol>
       <li>Search for customer using service address, name, account name, phone or email - and open.</li>
       <li>Select the correct Account and open.</li>
@@ -316,6 +319,7 @@ Page for displaying case steps and managing case step information
   </div>
   <div id="missedPickup" style="display: none">
     <ol>
+      <strong class="a">Missed Pickup</strong>
       <li>Search for customer using service address, name, account name, phone or email - and open.</li>
       <li>Select the correct Account and open.</li>
       <li>Click <b style="color:blue">NEW CASE</b> from <b style="color:red">ACTIVE Asset</b></li>
@@ -344,6 +348,7 @@ Page for displaying case steps and managing case step information
   </div>
   <div id="transferDivision" style="display:none">
     <br>
+    <strong class="a">Transfer Residential Customer Within Division</strong>
     <ol>
       <li>Determine if customer has delinquent/written off account at current address.</li>
       <li>Search for requested service address.</li>
@@ -389,6 +394,7 @@ Page for displaying case steps and managing case step information
     
     <div id="transfer" style="display:none">
       <br>
+      <strong class="a">Transfer Residential Outside Division</strong>
       <ol>
         <li>Determine if customer has delinquent/written off account at current address.</li>
         <li>Search for requested service address.</li>
@@ -421,6 +427,8 @@ Page for displaying case steps and managing case step information
       </ol>
     </div>
     <div id="accountUpdate" style="display:none">
+      <br>
+      <strong class="a">Update Account Information</strong>
       <ol>
         <li>Search for customer using service address, name, account name, phone or email - and open.</li>
         <li>Locate correct account and open.</li>
@@ -432,7 +440,7 @@ Page for displaying case steps and managing case step information
           </ol> 
         <li>Click <b style="color:blue">NEW CASE</b> from Active Site or Active Asset</li>
         <li>Case Record Type = <b style="color:red">NON-SERVICE</b></li>
-        <li>Sub Type = <b style="color:red">UPDATE ACCOUNT INFORMATIOn</b></li>
+        <li>Sub Type = <b style="color:red">UPDATE ACCOUNT INFORMATION</b></li>
         <li>Case Status = Leave as <strong>New</strong></li>
         <li>Request Description = Why did they call?</li>
         <li>Resolution Comments = What action did you take?</li>
@@ -442,6 +450,7 @@ Page for displaying case steps and managing case step information
     </div>
     <div id="containerDel" style="display: none">
     <br>
+      <strong class="a">Request Container Delivery</strong>
       <ol>
         <li>Search for customer using service address, name, account name, phone or email - and open.</li>
         <li>Locate correct account and open <b style="color:red">ACTIVE Site</b></li>
@@ -461,6 +470,8 @@ Page for displaying case steps and managing case step information
       </ol>
     </div>
     <div id="containerRem" style="display: none">
+      <br>
+      <strong class="a">Request Container Removal</strong>
       <ol>
         <li>Search for customer using service address, name, account name, phone or email - and open.</li>
         <li>Locate correct account and open <b style="color:red">ACTIVE Site</b></li>
@@ -475,6 +486,27 @@ Page for displaying case steps and managing case step information
         <li>Click on <b style="color:blue">GET PLAN DATE</b></li>
         <li>Click <b style="color:blue">SAVE</b></li>
       </ol>
+    </div>
+    <div id="billEscal" style="display:none">
+        <br>
+        <strong class="a">Billing Escalation</strong>
+        <ol>
+            <li>Search for customer using service address, name, account name, phone or email - and open.</li>
+            <li>Research <b style="color:blue">AR Notes, Reconciliation, Billing Console and/or IDS</li>
+            <li>Click <b style="color:blue">NEW CASE</b> from <b style="color:red">ACTIVE Site</b> or <b style="color:Red>ACTIVE Asset</b></li>
+            <li>Case Record Type = <b style="color:red">NON-SERVICE</b></li>
+            <li>Case Type = <b style="color:red">BILLING</b>
+            <li>Sub-Type = <b style="color:Red">INVOICE/PAYMENT QUESTIONS</b>
+            <li>Reason = Choose appropriate: <b style="color:red">RESOLVED, UNRESOLVED COMM/IND, UNRESOLVED RESIDENTIAL</b></li>
+            <ol class="a">
+                <li>Resolved = CRR Handled, closes with note. <b style="color:red">Only select if you took care of it.</b></li>
+                </li>Unresolved = Division will resolve with customer, automatically creates a note to division</li>
+            </ol>
+            <li>Case Status = <b style="color:red">Leave as NEW</b><li>
+            <li>Requestion Description = Why did the call?</li>
+            <li>Resolution Comments = What action did you take?</li>
+            <li>Click <b style="color:blue">SAVE</b></li>
+        </ol>
     </div>
   
   <script type="text/javascript" src="js/script.js"></script>
@@ -503,6 +535,7 @@ Page for displaying case steps and managing case step information
     var accountUpdate = this.options[this.selectedIndex].value === "accountUpdate";
     var containerDel = this.options[this.selectedIndex].value === "containerDel";
     var containerRem = this.options[this.selectedIndex].value === "containerRem";
+    var billEscal = this.options[this.selectedIndex].value === "billEscal";
     
     
     document.getElementById('picDiv').style.display = 'none';
@@ -521,6 +554,7 @@ Page for displaying case steps and managing case step information
     document.getElementById('accountUpdate').style.display = accountUpdate ? 'block' : 'none';
     document.getElementById('containerDel').style.display = containerDel ? 'block' : 'none';
     document.getElementById('containerRem').style.display = containerRem ? 'block' : 'none';
+    document.getElementById('billEscal').style.display = billEscal ? 'block' : 'none';
   }
   
   // attach event handler
@@ -532,11 +566,7 @@ Page for displaying case steps and managing case step information
       onChange.apply(select, arguments);
     });
   }
-  
-  
 
-
-     
   </script>
 
   </body>
